@@ -4,5 +4,5 @@ export interface InvestmentCalculatorPort {
     monthlyDeposit: number,
     annualInterestRate: number,
     years: number
-  ): number;
+  ): Promise<number>;
 }

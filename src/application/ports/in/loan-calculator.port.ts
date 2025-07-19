@@ -1,5 +1,25 @@
 export interface LoanCalculatorPort {
-  calculateMonthlyPayment(loanAmount: number, annualInterestRate: number, months: number): number;
-  calculateTotalPayment(monthlyPayment: number, months: number): number;
-  calculateTotalInterest(loanAmount: number, totalPayment: number): number;
+  calculateMonthlyPayment(
+    loanAmount: number,
+    annualInterestRate: number,
+    loanTermInYears: number
+  ): Promise<number>;
+
+  calculateTotalInterest(
+    loanAmount: number,
+    annualInterestRate: number,
+    loanTermInYears: number
+  ): Promise<number>;
+
+  calculateAmortizationSchedule(
+    loanAmount: number,
+    annualInterestRate: number,
+    loanTermInYears: number
+  ): Promise<Array<{
+    month: number;
+    payment: number;
+    principal: number;
+    interest: number;
+    balance: number;
+  }>>;
 }

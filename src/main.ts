@@ -1,13 +1,12 @@
-import { NestFactory } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common';
+import { NestFactory } from '@nestjs/core';
 import { SwaggerModule } from '@nestjs/swagger';
-import { AppModule } from './infrastructure/config/app.module';
+import { AppModule } from './app.module';
 import { swaggerConfig } from './infrastructure/config/swagger.config';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  
-  // Configuração de validação global
+
   app.useGlobalPipes(new ValidationPipe({
     whitelist: true,
     transform: true,
@@ -16,16 +15,29 @@ async function bootstrap() {
       enableImplicitConversion: true,
     },
   }));
-  
-  // Configuração do Swagger
-  const document = SwaggerModule.createDocument(app, swaggerConfig);
-  SwaggerModule.setup('api', app, document);
-  
-  // Configuração de CORS
-  app.enableCors();
-  
-  await app.listen(3000);
-  console.log('Aplicação rodando em: http://localhost:3000');
-  console.log('Documentação da API disponível em: http://localhost:3000/api');
+
+  if (process.env.NODE_ENV !== 'production') {
+    const document = SwaggerModule.createDocument(app, swaggerConfig);
+    SwaggerModule.setup(process.env.SWAGGER_PATH || 'api', app, document);
+  }
+
+  const allowedOrigins = process.env.ALLOWED_ORIGINS
+    ? process.env.ALLOWED_ORIGINS.split(',')
+    : ['http://localhost:3000'];
+
+  app.enableCors({
+    origin: allowedOrigins,
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  });
+
+  const port = process.env.PORT || 3000;
+  await app.listen(port);
+
+  console.log(`🚀 Aplicação rodando em: http://localhost:${port}`);
+  if (process.env.NODE_ENV !== 'production') {
+    console.log(`📚 Documentação da API: http://localhost:${port}/${process.env.SWAGGER_PATH || 'api'}`);
+  }
 }
+
 bootstrap();

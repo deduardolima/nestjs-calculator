@@ -1,6 +1,6 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { FuelCalculatorService } from '~/application/services';
+import { FuelCalculatorService } from '../../../../application/services';
 import { AverageConsumptionDto, TotalCostDto } from './dtos';
 
 

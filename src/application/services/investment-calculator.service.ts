@@ -1,7 +1,7 @@
 import { CACHE_MANAGER } from '@nestjs/cache-manager';
 import { Inject, Injectable } from '@nestjs/common';
 import { Cache } from 'cache-manager';
-import { InvestmentCalculatorModel } from '~/domain/models';
+import { InvestmentCalculatorModel } from '../../domain/models';
 import { InvestmentCalculatorPort } from '../ports/in';
 
 @Injectable()

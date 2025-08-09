@@ -1,6 +1,6 @@
 import { Body, Controller, Post, UsePipes, ValidationPipe } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { InvestmentCalculatorService } from '~/application/services';
+import { InvestmentCalculatorService } from '../../../../application/services';
 import { CompoundInterestDto, FutureValueDto, ROIDto, SimpleInterestDto } from './dtos';
 
 

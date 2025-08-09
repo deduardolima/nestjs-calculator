@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { PercentageCalculatorModel } from '~/domain/models';
+import { PercentageCalculatorModel } from '../../domain/models';
 import { PercentageCalculatorPort } from '../ports/in';
 
 

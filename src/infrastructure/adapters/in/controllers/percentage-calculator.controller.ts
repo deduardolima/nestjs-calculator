@@ -1,6 +1,6 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { PercentageCalculatorService } from '~/application/services';
+import { PercentageCalculatorService } from '../../../../application/services';
 
 
 import { UsePipes, ValidationPipe } from '@nestjs/common';

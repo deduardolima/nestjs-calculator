@@ -1,6 +1,6 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { DebtCalculatorService } from '~/application/services';
+import { DebtCalculatorService } from '../../../../application/services';
 import { MonthlyPaymentDto, TimeToPayOffDto } from './dtos';
 
 

@@ -1,6 +1,6 @@
 import { Body, Controller, Post, UsePipes, ValidationPipe } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { LoanCalculatorService } from '~/application/services';
+import { LoanCalculatorService } from '../../../../application/services';
 import { AmortizationDto, LoanCapacityDto, MonthlyPaymentDto, TotalInterestDto } from './dtos/loan-calculator.dto';
 
 

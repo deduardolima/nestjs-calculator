@@ -1,7 +1,7 @@
 import { CACHE_MANAGER } from '@nestjs/cache-manager';
 import { Inject, Injectable } from '@nestjs/common';
 import { Cache } from 'cache-manager';
-import { LoanCalculatorModel } from '~/domain/models';
+import { LoanCalculatorModel } from '../../domain/models';
 import { LoanCalculatorPort } from '../ports/in';
 
 @Injectable()

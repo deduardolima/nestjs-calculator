@@ -16,10 +16,8 @@ async function bootstrap() {
     },
   }));
 
-  if (process.env.NODE_ENV !== 'production') {
-    const document = SwaggerModule.createDocument(app, swaggerConfig);
-    SwaggerModule.setup(process.env.SWAGGER_PATH || 'api', app, document);
-  }
+  const document = SwaggerModule.createDocument(app, swaggerConfig);
+  SwaggerModule.setup(process.env.SWAGGER_PATH || 'api', app, document);
 
   const allowedOrigins = process.env.ALLOWED_ORIGINS
     ? process.env.ALLOWED_ORIGINS.split(',')
@@ -35,6 +33,7 @@ async function bootstrap() {
   await app.listen(port);
 
   console.log(`🚀 Aplicação rodando em: http://localhost:${port}`);
+  console.log(`📚 Documentação da API: http://localhost:${port}/${process.env.SWAGGER_PATH || 'api'}`);
   if (process.env.NODE_ENV !== 'production') {
     console.log(`📚 Documentação da API: http://localhost:${port}/${process.env.SWAGGER_PATH || 'api'}`);
   }

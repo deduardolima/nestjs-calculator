@@ -148,7 +148,6 @@ export class InvestmentCalculatorService implements InvestmentCalculatorPort {
   async clearCache(): Promise<void> {
     try {
       await this.cacheManager.clear();
-      console.log('🧹 Cache limpo com sucesso');
     } catch (error) {
       throw new Error('Falha ao limpar cache');
     }
@@ -157,7 +156,6 @@ export class InvestmentCalculatorService implements InvestmentCalculatorPort {
   async deleteCacheKey(key: string): Promise<void> {
     try {
       await this.cacheManager.del(key);
-      console.log(`🗑️ Chave removida: ${key}`);
     } catch (error) {
       throw new Error('Falha ao remover chave');
     }
